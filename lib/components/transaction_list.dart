@@ -6,36 +6,35 @@ class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
   final void Function(String) onRemove;
 
-  TransactionList(this.transactions, this.onRemove);
+  // ignore: use_key_in_widget_constructors
+  const TransactionList(this.transactions, this.onRemove);
 
   @override
   Widget build(BuildContext context) {
     return transactions.isEmpty
         ? LayoutBuilder(
-      builder: (ctx, constraints) {
-        return Column(
-          children: [
-            const SizedBox(
-              height: 20
-            ),
-            Text(
-              'Nenhuma transação cadastrada!',
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              height: constraints.maxHeight * 0.6,
-              child: Image.asset(
-                'assets/images/waiting.png',
-                fit: BoxFit.cover,
-              ),
-            )
-          ],
-        );
-      },
-        )
+            builder: (ctx, constraints) {
+              return Column(
+                children: [
+                  const SizedBox(height: 20),
+                  Text(
+                    'Nenhuma transação cadastrada!',
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    height: constraints.maxHeight * 0.6,
+                    child: Image.asset(
+                      'assets/images/waiting.png',
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                ],
+              );
+            },
+          )
         : ListView.builder(
             itemCount: transactions.length,
             itemBuilder: (ctx, index) {
@@ -53,30 +52,25 @@ class TransactionList extends StatelessWidget {
                           child: Text(
                         'R\$ ${tr.value.toStringAsFixed(2)}',
                         style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
+                            color: Colors.white, fontWeight: FontWeight.bold),
                       )),
                     ),
                   ),
                   title: Text(
                     tr.title,
-                    style: Theme.of(context).textTheme.headline6 ,
+                    style: Theme.of(context).textTheme.headline6,
                   ),
-                  subtitle: Text(
-                    DateFormat('d MMM y').format(tr.date)
-                  ),
-                  trailing: MediaQuery.of(context).size.width > 400 ?
-                    TextButton.icon(
-
-                        icon: const Icon(Icons.delete_rounded),
-                        label: const Text("Deletar"),
-                        onPressed: () => onRemove(tr.id),
-                    )
-                    : IconButton(
-                      icon: const Icon(Icons.delete_rounded),
-                      onPressed: () => onRemove(tr.id) ,
-                      color: Theme.of(context).colorScheme.secondary
-                    ),
+                  subtitle: Text(DateFormat('d MMM y').format(tr.date)),
+                  trailing: MediaQuery.of(context).size.width > 400
+                      ? TextButton.icon(
+                          icon: const Icon(Icons.delete_rounded),
+                          label: const Text("Deletar"),
+                          onPressed: () => onRemove(tr.id),
+                        )
+                      : IconButton(
+                          icon: const Icon(Icons.delete_rounded),
+                          onPressed: () => onRemove(tr.id),
+                          color: Theme.of(context).colorScheme.secondary),
                 ),
               );
             },

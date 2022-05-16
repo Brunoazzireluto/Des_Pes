@@ -99,16 +99,14 @@ class _HomepageState extends State<Homepage> {
     final mediaQuery = MediaQuery.of(context);
     bool isLandscape = mediaQuery.orientation == Orientation.landscape;
 
+    final iconList = Platform.isIOS ? CupertinoIcons.list_bullet : Icons.list;
+    final iconChart =
+        Platform.isIOS ? CupertinoIcons.chart_bar_circle_fill : Icons.bar_chart;
+
     final actions = [
       if (isLandscape)
         _getIconButton(
-          _ShowChart
-              ? Platform.isIOS
-                  ? CupertinoIcons.list_bullet
-                  : Icons.list
-              : Platform.isIOS
-                  ? CupertinoIcons.chart_bar_circle_fill
-                  : Icons.bar_chart,
+          _ShowChart ? iconList : iconChart,
           () {
             setState(() {
               _ShowChart = !_ShowChart;
@@ -130,7 +128,8 @@ class _HomepageState extends State<Homepage> {
         appBar.preferredSize.height -
         mediaQuery.padding.top;
 
-    final bodyPage = SingleChildScrollView(
+    final bodyPage = SafeArea(
+        child: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -145,7 +144,7 @@ class _HomepageState extends State<Homepage> {
                 child: TransactionList(_transactions, _removeTransaction)),
         ],
       ),
-    );
+    ));
 
     return Platform.isIOS
         ? CupertinoPageScaffold(
