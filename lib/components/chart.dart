@@ -1,42 +1,36 @@
-import 'dart:ffi';
-
 import 'package:des_pes/components/chart_bar.dart';
 import 'package:des_pes/models/transaction.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
 class Chart extends StatelessWidget {
-
   final List<Transaction> recentTransactions;
 
   Chart(this.recentTransactions);
 
-  List<Map<String, Object>> get groupedTransaction{
-    return List.generate(7, (index){
-      final weekDay = DateTime.now().subtract(
-        Duration(days: index)
-      );
+  List<Map<String, Object>> get groupedTransaction {
+    return List.generate(7, (index) {
+      final weekDay = DateTime.now().subtract(Duration(days: index));
       double totalSum = 0.0;
-      for(var i = 0; i < recentTransactions.length; i++){
+      for (var i = 0; i < recentTransactions.length; i++) {
         bool sameDay = recentTransactions[i].date.day == weekDay.day;
         bool sameMonth = recentTransactions[i].date.month == weekDay.month;
         bool sameYear = recentTransactions[i].date.year == weekDay.year;
 
-        if( sameDay && sameMonth && sameYear){
+        if (sameDay && sameMonth && sameYear) {
           totalSum += recentTransactions[i].value;
         }
       }
-      
 
       return {
-        'day': DateFormat.E().format(weekDay)[0], 
+        'day': DateFormat.E().format(weekDay)[0],
         'value': totalSum,
       };
     }).reversed.toList();
   }
 
   double get _weektotalValue {
-    return groupedTransaction.fold(0.0, (sum, tr){
+    return groupedTransaction.fold(0.0, (sum, tr) {
       return sum + (tr['value'] as num).toDouble();
     });
   }

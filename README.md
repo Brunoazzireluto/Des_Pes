@@ -1,16 +1,43 @@
 # des_pes
 
-A new Flutter project.
+Um Projeto em Flutter para estudar Responsividade
 
-## Getting Started
+<br>
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+### 📖 sobre
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Uma Simples Aplicação de Despesas Criada no curso de [Flutter da Cod3r](https://www.udemy.com/course/curso-flutter/)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<br>
+
+## 🛠️  Construído com
+
+<br>
+
+Ferramentas Usadas na criação deste App:
+
+
+<div style="display: inline_block">
+
+  <img align="center" style="margin: 3px" alt="Flutter" src="https://img.shields.io/badge/Flutter-%2302569B?style=for-the-badge&logo=flutter&logoColor=white" />
+  <img align="center" style="margin: 3px"  alt="Dart" src="https://img.shields.io/badge/Dart-%230175C2?style=for-the-badge&logo=dart&logoColor=white" />
+  <img align="center" style="margin: 3px"  alt="Vscode" src="https://img.shields.io/badge/Vs Code-%23007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" />
+
+</div>
+
+
+<Br>
+
+---
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+Feito com ❤️ por [Bruno Alves](https://github.com/Brunoazzireluto)
+
